@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package = "com.ideas2it.model">
+	<class name = "Skill" table = "Skills">
+		<id name = "skillId" column = "SkillId">
+			<generator class = "increment"></generator>
+		</id>
+		<property name = "skillSet" column = "Skills"></property>
+		<property name = "skillCertification"
+			column = "skillCertification"></property>
+		<property name = "skillProficiency" column = "skillProficiency"></property>
+	</class>
+</hibernate-mapping>		
