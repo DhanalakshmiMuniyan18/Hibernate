@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package = "com.ideas2it.model">
+	<class name = "Employee" table = "Employee">
+		<id name = "id" column = "Id">
+			<generator class = "increment"></generator>
+		</id>
+		<property name = "name" column = "Name"></property> 
+		<property name = "designation" column = "Designation"></property>
+		<property name = "emailId" column = "EmailId"></property>
+		<property name = "phoneNumber" column = "PhoneNumber"></property>
+		<property name = "salary" column = "Salary"></property>
+		<property name = "dateOfBirth" column ="DateOfBirth"></property>
+		<property name ="bloodGroup" column = "BloodGroup"></property>
+		<property name = "dateOfJoining" column = "DateOfJoining"></property>
+
+		<joined-subclass name = "Trainee" table = "Trainee">
+			<key column = "Id" />
+			<property name = "trainingPeriod" column = "TrainingPeriod"></property>
+			<property name = "trainingTechnology"
+				column = "TrainingTechnology"></property>
+			<property name = "trainingTestMark" column = "TrainingTestMark"></property>
+		</joined-subclass>
+
+		<joined-subclass name = "Trainer" table = "Trainer">
+			<key column = "Id" />
+			<property name = "numberOfStudents" column = "NumberOfStudents"></property>
+			<property name = "specialisation" column = "Specialisation"></property>
+			<set name = "skills" fetch = "join" lazy = "true" cascade = "save-update,delete">
+				<key column = "Id" not-null = "true" />
+				<one-to-many class = "Skill" />
+			</set>
+		</joined-subclass>
+
+	</class>
+</hibernate-mapping>
+		
